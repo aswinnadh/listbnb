@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="flex items-center space-x-2 text-sm">
           <img src={images.footerLogo} alt="Logo" className="h-6 object-contain" />
           <span className="text-rose-500  text-lg">|</span>
-          <span className="text-gray-400 text-lg">Copyright 2024</span>
+          <span className="text-gray-400 text-md">Copyright 2024</span>
         </div>
 
         {/* Right Section */}

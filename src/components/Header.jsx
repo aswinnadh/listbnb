@@ -13,7 +13,7 @@ const Header = () => {
           <img 
             src={images.logo} 
             alt="Buy & Sell" 
-            className="h-10" 
+            className="h-7" 
           />
         </Link>
         
@@ -24,7 +24,7 @@ const Header = () => {
                 <img 
                   src={user.profileImage || images.man}
                   alt="User Profile"
-                  className="w-8 h-8 rounded-full object-cover"
+                  className="w-7 h-7 rounded-full object-cover"
                 />
               </Link>
               <Link to="/dashboard?tab=create" className="bg-rose-500 text-sm text-white px-4 py-2 rounded-full">
@@ -33,11 +33,11 @@ const Header = () => {
             </>
           ) : (
             <>
-              <Link to="/login" className="text-gray-700 hover:text-blue-600 flex items-center gap-1">
+              <Link to="/login" className="text-gray-700 hover:text-blue-600 flex items-center text-sm gap-1">
                 <PersonIcon className="text-gray-500" fontSize="small" />
                 Sign In
               </Link>
-              <Link to="/dashboard?tab=create" className="bg-rose-500 text-sm text-white px-4 py-2 rounded-full">
+              <Link to="/dashboard?tab=create" className="bg-rose-500 text-xs text-white px-4 py-2 rounded-full">
                 Post Your Ad {' >'}
               </Link>
             </>
