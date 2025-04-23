@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
-import titleImage from '../assets/images/title.png'
-import manImage from '../assets/images/man.png'
+import { images } from '../utils/constants'
 import PersonIcon from '@mui/icons-material/Person' // Material icon for Sign In
 
 const Header = () => {
@@ -12,7 +11,7 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <Link to="/">
           <img 
-            src={titleImage} 
+            src={images.logo} 
             alt="Buy & Sell" 
             className="h-10" 
           />
@@ -23,7 +22,7 @@ const Header = () => {
             <>
               <Link to="/dashboard" className="text-gray-700 hover:text-blue-600">
                 <img 
-                  src={user.profileImage || manImage}
+                  src={user.profileImage || images.man}
                   alt="User Profile"
                   className="w-8 h-8 rounded-full object-cover"
                 />

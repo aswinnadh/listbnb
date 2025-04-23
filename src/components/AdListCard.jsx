@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import noImage from '../assets/images/no-image.png';
+import { images } from '../utils/constants';
 
 const AdListCard = ({ ad, showEditButton = true }) => {
   if (!ad) return null;
@@ -9,7 +9,7 @@ const AdListCard = ({ ad, showEditButton = true }) => {
     <div className="bg-white rounded-lg border border-gray-200 hover:border-rose-500 transition-colors overflow-hidden flex p-4 mb-4">
       <div className="w-32 h-32 flex-shrink-0 bg-gray-100 flex justify-center items-center">
         <img
-          src={ad.image || noImage}
+          src={ad.image || images.noImage}
           alt={ad.title || 'Advertisement'}
           className="h-full w-full object-cover"
         />

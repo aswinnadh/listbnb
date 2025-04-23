@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import AdListCard from "./AdListCard";
 import { MdLocationOn, MdEmail, MdPhone } from "react-icons/md";
-import man from '../assets/images/man.png'; 
+import { images } from "../utils/constants";
 
 const MyAccount = ({ user, profile, ads, loading }) => {
   if (loading) {
@@ -19,7 +19,7 @@ const MyAccount = ({ user, profile, ads, loading }) => {
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
           <div className="flex items-center gap-4">
             <img
-              src={displayProfile?.imageUrl || man}
+              src={displayProfile?.imageUrl || images.man}
               alt="Profile"
               className="w-20 h-20 rounded-full object-cover border"
             />

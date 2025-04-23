@@ -7,7 +7,7 @@ import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
-import man from '../assets/images/man.png'; 
+import { images } from "../utils/constants";
 
 const AdDetail = () => {
   const { id } = useParams();
@@ -140,7 +140,7 @@ const AdDetail = () => {
           <div className="border border-gray-200 rounded-lg p-6 flex flex-col items-center space-y-4">
             <div className="w-20 h-20 rounded-full bg-gray-200 overflow-hidden">
               <img
-                src={ad.owner.image||man}
+                src={ad.owner.image||images.man}
                 alt="User"
                 className="w-full h-full object-cover"
               />

@@ -5,8 +5,7 @@ import { useAuth } from '../../context/AuthContext'
 import MailIcon from '@mui/icons-material/Mail'
 import KeyIcon from '@mui/icons-material/VpnKey'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
-import titleImg from '../../assets/images/title.png'
-import loginImg from '../../assets/images/log.png'
+import { images } from '../../utils/constants'
 
 const Login = () => {
   const [error, setError] = useState(null)
@@ -29,7 +28,7 @@ const Login = () => {
         {/* Left Section - Login Form */}
         <div className="w-full md:w-1/2 p-10 flex flex-col justify-center">
           <div className="flex flex-col items-center mb-10 space-y-4">
-            <img src={titleImg} alt="Listbnb" className="h-10 mb-4" />
+            <img src={images.logo} alt="Listbnb" className="h-10 mb-4" />
             <p className="text-center text-gray-600 text-xs mb-3">
               <span className="font-bold">Listbnb</span> a Largest Classified Listing Marketplace offers perfect Ads classifieds...
             </p>
@@ -90,7 +89,7 @@ const Login = () => {
 
         {/* Right Section - Promo Content */}
         <div className="w-full md:w-1/2 bg-rose-50 p-10 flex flex-col items-center justify-center space-y-6">
-          <img src={loginImg} alt="Login" className="max-w-xs mb-8" />
+          <img src={images.log} alt="Login" className="max-w-xs mb-8" />
           <h2 className="text-2xl font-bold">
             Don't Have an Account<span className="text-rose-500">?</span>
           </h2>

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import noImage from '../assets/images/no-image.png'; 
+import { images } from "../utils/constants";
 
 const AdCard = ({ ad, view }) => {
   const isList = view === "list";
@@ -23,7 +23,7 @@ const AdCard = ({ ad, view }) => {
           } bg-gray-100 flex justify-center`}
         >
           <img
-            src={ad.image || noImage}
+            src={ad.image || images.noImage}
             alt={ad.title}
             className="h-full w-full object-contain"
           />
