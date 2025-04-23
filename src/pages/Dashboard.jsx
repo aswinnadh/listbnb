@@ -20,19 +20,21 @@ const Dashboard = () => {
   const queryParams = new URLSearchParams(location.search);
   const tabFromUrl = queryParams.get("tab");
 
-  const [activeTab, setActiveTab] = useState(tabFromUrl || "edit-profile");
+  const [activeTab, setActiveTab] = useState(tabFromUrl || "myaccount");
   const [profile, setProfile] = useState(null);
   const [ads, setAds] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [formError, setFormError] = useState(null);
 
   useEffect(() => {
-    setActiveTab(tabFromUrl || "edit-profile");
+    setActiveTab(tabFromUrl || "myaccount");
   }, [tabFromUrl]);
 
   useEffect(() => {
     const loadData = async () => {
       setLoading(true);
+      setError(null);
       try {
         if (activeTab === "edit-profile" || activeTab === "myaccount") {
           const profileData = await fetchUserProfile(token);
@@ -53,6 +55,8 @@ const Dashboard = () => {
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
+    setError(null);
+    setFormError(null);
     navigate(`/dashboard?tab=${tab}`);
   };
 
@@ -60,6 +64,7 @@ const Dashboard = () => {
     try {
       const updatedProfile = await updateUserProfile(profileData, token);
       setProfile(updatedProfile);
+      setError(null);
     } catch (err) {
       setError(err.message);
     }
@@ -67,23 +72,35 @@ const Dashboard = () => {
 
   const handleAdSubmit = async (adData) => {
     try {
-      await createAd(adData, token);
+      setFormError(null);
+      const adPayload = {
+        ...adData,
+        userId: user.id,
+        email: user.email,
+        price: Number(adData.price)
+      };
+      
+      await createAd(adPayload, token);
+      // Refresh ads after creation
+      const updatedAds = await fetchAds();
+      setAds(updatedAds);
       handleTabChange("ads");
     } catch (err) {
-      setError(err.message);
+      console.error("Ad creation error:", err);
+      setFormError(err.message || "Failed to create advertisement");
     }
   };
 
   const getBreadcrumb = () => {
     switch (activeTab) {
+      case "myaccount":
+        return "My Account";
       case "edit-profile":
         return "Edit Profile";
       case "ads":
         return "My Ads";
       case "create":
         return "Post Ad";
-      case "myaccount":
-        return "My Account";
       default:
         return "Dashboard";
     }
@@ -107,7 +124,11 @@ const Dashboard = () => {
 
         {/* Right Section */}
         <div className="w-4/5">
-          {error && <div className="text-red-500 mb-4">{error}</div>}
+          {error && (
+            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+              {error}
+            </div>
+          )}
 
           {activeTab === "edit-profile" &&
             (loading ? (
@@ -147,7 +168,7 @@ const Dashboard = () => {
               <h2 className="text-xl font-bold mb-6">
                 Create New Advertisement
               </h2>
-              <AdForm onSubmit={handleAdSubmit} />
+              <AdForm onSubmit={handleAdSubmit} error={formError} />
             </div>
           )}
         </div>

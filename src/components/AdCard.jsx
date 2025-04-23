@@ -25,7 +25,7 @@ const AdCard = ({ ad, view }) => {
           <img
             src={ad.image || noImage}
             alt={ad.title}
-            className="h-full w-full object-cover"
+            className="h-full w-full object-contain"
           />
         </div>
 

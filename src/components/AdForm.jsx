@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const AdForm = ({ initialData = {}, onSubmit }) => {
+const AdForm = ({ initialData = {}, onSubmit, error }) => {
   const [formData, setFormData] = useState({
     title: initialData.title || '',
     description: initialData.description || '',
@@ -15,14 +15,17 @@ const AdForm = ({ initialData = {}, onSubmit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    onSubmit({
-      ...formData,
-      price: Number(formData.price)
-    })
+    onSubmit(formData)
   }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6 flex flex-col p-6 bg-white rounded-lg">
+      {error && (
+        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+          {error}
+        </div>
+      )}
+      
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-2">Ad Title</label>
         <input

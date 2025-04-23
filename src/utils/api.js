@@ -89,13 +89,19 @@ export const fetchAdById = async (id) => {
 };
 
 export const createAd = async (adData, token) => {
-  const response = await fetch(`${API_BASE_URL}/api/advertisements`, {
-    method: 'POST',
-    headers: authHeaders(token),
-    body: JSON.stringify(adData)
-  })
-  return handleResponse(response)
-}
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/advertisements`, {
+      method: 'POST',
+      headers: authHeaders(token),
+      body: JSON.stringify(adData)
+    });
+    
+    return await handleResponse(response);
+  } catch (error) {
+    console.error('API Error:', error);
+    throw error;
+  }
+};
 
 export const deleteAd = async (id, token) => {
   const response = await fetch(`${API_BASE_URL}/api/advertisements/${id}`, {

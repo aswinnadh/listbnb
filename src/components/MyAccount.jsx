@@ -39,17 +39,17 @@ const MyAccount = ({ user, profile, ads, loading }) => {
           </Link>
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-4 text-gray-700 mt-2">
+        <div className="flex flex-col sm:flex-row gap-4 text-sm text-gray-500 mt-2">
           <div className="flex items-center gap-2">
-            <MdLocationOn className="text-xl" />
+            <MdLocationOn className="text-md" />
             <span>{displayProfile?.location || "Unknown Location"}</span>
           </div>
           <div className="flex items-center gap-2">
-            <MdEmail className="text-xl" />
+            <MdEmail className="text-md" />
             <span>{displayProfile?.email || "Not Provided"}</span>
           </div>
           <div className="flex items-center gap-2">
-            <MdPhone className="text-xl" />
+            <MdPhone className="text-md" />
             <span>{displayProfile?.phone || "Not Provided"}</span>
           </div>
         </div>
